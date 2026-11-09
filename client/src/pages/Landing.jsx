@@ -4,6 +4,7 @@ import {
   Zap, ShieldCheck, BarChart3, Clock, ArrowRight,
   CheckCircle2, MapPin, Wrench
 } from 'lucide-react'
+import { FrameBorder } from '../components/ui/FrameBorder'
 
 export default function Landing() {
   return (
@@ -92,92 +93,102 @@ export default function Landing() {
             </div>
           </div>
 
-          {/* Right Column: Crafted Coded Dispatch Console Preview (5 cols) */}
+          {/* Right Column: Crafted Coded Dispatch Console Preview Framed in FrameBorder (5 cols) */}
           <div className="lg:col-span-5 mt-10 lg:mt-0">
-            <div className="card p-4 sm:p-5 bg-[#0f1424] border-slate-800 shadow-xl">
-              
-              {/* Console Header */}
-              <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-slate-800 text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  <span className="font-mono text-slate-300 font-medium">Dispatch queue</span>
-                </div>
-                <span className="font-mono text-[11px] text-slate-500">Live operational feed</span>
-              </div>
-
-              {/* Active Ticket Card (Moment) */}
-              <div className="bg-[#141b2f] border border-slate-700/70 rounded-lg p-3.5 mb-3">
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="font-mono text-xs text-blue-400 font-medium bg-blue-500/10 border border-blue-500/20 px-1.5 py-0.5 rounded">
-                    CP-2024-00104
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                    High priority
-                  </span>
-                </div>
-
-                <p className="text-sm font-medium text-white mb-1.5">
-                  Water supply disruption in 2nd floor restroom
-                </p>
-
-                <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
-                  <span className="flex items-center gap-1 text-slate-300">
-                    <MapPin className="w-3 h-3 text-slate-400" />
-                    Hostel Block B
-                  </span>
-                  <span>•</span>
-                  <span>Water & Plumbing</span>
-                </div>
-
-                {/* Progress bar state */}
-                <div className="bg-slate-900/90 rounded p-2.5 border border-slate-800 space-y-1.5">
-                  <div className="flex items-center justify-between text-[11px]">
-                    <span className="text-blue-300 flex items-center gap-1 font-medium">
-                      <Wrench className="w-3 h-3" />
-                      Technician dispatched
-                    </span>
-                    <span className="text-slate-400 font-mono tabular-nums">12m ago</span>
-                  </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1 overflow-hidden">
-                    <div className="bg-blue-500 h-full rounded-full w-2/3" />
-                  </div>
-                  <p className="text-[10px] text-slate-400 italic">
-                    "Plumbing contractor en route with replacement copper valve"
-                  </p>
-                </div>
-              </div>
-
-              {/* Secondary Queue Items */}
-              <div className="space-y-2 text-xs">
-                <div className="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/80">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="font-mono text-[11px] text-slate-400">CP-2024-00105</span>
-                    <span className="text-slate-300 truncate">Exposed wire sparking in socket</span>
-                  </div>
-                  <span className="inline-flex items-center gap-1 text-[11px] text-rose-400 flex-shrink-0 ml-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                    Critical
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/80">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="font-mono text-[11px] text-slate-400">CP-2024-00098</span>
-                    <span className="text-slate-300 truncate">Ceiling fan motor replaced</span>
-                  </div>
-                  <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 flex-shrink-0 ml-2">
+            <FrameBorder
+              radius={16}
+              lineWidth={1.5}
+              glow={0.75}
+              glowWidth={14}
+              flowSpeed={1}
+              accentColor="#3b82f6"
+              baseBorderColor="rgba(255, 255, 255, 0.1)"
+              className="shadow-2xl"
+            >
+              <div className="card p-4 sm:p-5 bg-[#0f1424] border-0">
+                {/* Console Header */}
+                <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-slate-800 text-xs">
+                  <div className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    Resolved
-                  </span>
+                    <span className="font-mono text-slate-300 font-medium">Dispatch queue</span>
+                  </div>
+                  <span className="font-mono text-[11px] text-slate-500">Live operational feed</span>
+                </div>
+
+                {/* Active Ticket Card (Moment) */}
+                <div className="bg-[#141b2f] border border-slate-700/70 rounded-lg p-3.5 mb-3">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="font-mono text-xs text-blue-400 font-medium bg-blue-500/10 border border-blue-500/20 px-1.5 py-0.5 rounded">
+                      CP-2024-00104
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+                      High priority
+                    </span>
+                  </div>
+
+                  <p className="text-sm font-medium text-white mb-1.5">
+                    Water supply disruption in 2nd floor restroom
+                  </p>
+
+                  <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
+                    <span className="flex items-center gap-1 text-slate-300">
+                      <MapPin className="w-3 h-3 text-slate-400" />
+                      Hostel Block B
+                    </span>
+                    <span>•</span>
+                    <span>Water & Plumbing</span>
+                  </div>
+
+                  {/* Progress bar state */}
+                  <div className="bg-slate-900/90 rounded p-2.5 border border-slate-800 space-y-1.5">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="text-blue-300 flex items-center gap-1 font-medium">
+                        <Wrench className="w-3 h-3" />
+                        Technician dispatched
+                      </span>
+                      <span className="text-slate-400 font-mono tabular-nums">12m ago</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-1 overflow-hidden">
+                      <div className="bg-blue-500 h-full rounded-full w-2/3" />
+                    </div>
+                    <p className="text-[10px] text-slate-400 italic">
+                      "Plumbing contractor en route with replacement copper valve"
+                    </p>
+                  </div>
+                </div>
+
+                {/* Secondary Queue Items */}
+                <div className="space-y-2 text-xs">
+                  <div className="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/80">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="font-mono text-[11px] text-slate-400">CP-2024-00105</span>
+                      <span className="text-slate-300 truncate">Exposed wire sparking in socket</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[11px] text-rose-400 flex-shrink-0 ml-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                      Critical
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/80">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="font-mono text-[11px] text-slate-400">CP-2024-00098</span>
+                      <span className="text-slate-300 truncate">Ceiling fan motor replaced</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 flex-shrink-0 ml-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Resolved
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+                  <span>3 active triage engineers online</span>
+                  <span className="font-mono">SLA standard</span>
                 </div>
               </div>
-
-              <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
-                <span>3 active triage engineers online</span>
-                <span className="font-mono">SLA standard</span>
-              </div>
-            </div>
+            </FrameBorder>
           </div>
 
         </div>
