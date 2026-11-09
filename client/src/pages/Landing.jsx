@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {
   Zap, ShieldCheck, BarChart3, Clock, ArrowRight,
-  CheckCircle2
+  CheckCircle2, MapPin, Wrench
 } from 'lucide-react'
 
 export default function Landing() {
@@ -38,74 +38,148 @@ export default function Landing() {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="px-6 pt-20 pb-16 max-w-4xl mx-auto text-center">
-        {/* Release badge */}
-        <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-3 py-1 text-xs text-slate-400 mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-          <span>Campus issue reporting and resolution system</span>
-        </div>
-
-        <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white mb-6 leading-tight">
-          Report campus facility issues.<br />
-          Follow resolution in real time.
-        </h1>
-
-        <p className="text-sm sm:text-base text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed">
-          A direct operational link between students and campus maintenance teams.
-          Immediate report filing, automated urgency triage, and complete audit history.
-        </p>
-
-        {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-14">
-          <Link
-            to="/register"
-            className="btn-primary text-sm py-2.5 px-5 w-full sm:w-auto"
-          >
-            <span>Report an issue</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/login"
-            className="btn-secondary text-sm py-2.5 px-5 w-full sm:w-auto bg-slate-900 text-slate-200 border-slate-800 hover:bg-slate-800"
-          >
-            Sign in with demo account
-          </Link>
-        </div>
-
-        {/* Product Preview Card */}
-        <div className="card text-left p-4 sm:p-6 bg-[#0f1423] border-slate-800 shadow-xl max-w-3xl mx-auto">
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-              <span className="text-xs text-slate-400 font-mono ml-2">dispatch.campuspulse.internal</span>
+      {/* Unslopped Hero Section: Asymmetric Split */}
+      <section className="px-6 pt-12 pb-16 lg:pt-20 lg:pb-24 max-w-6xl mx-auto">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+          
+          {/* Left Column: Headline, Copy & Actions (7 cols) */}
+          <div className="lg:col-span-7 text-left">
+            <div className="inline-flex items-center gap-2 text-xs text-slate-400 font-mono mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>Campus maintenance dispatch</span>
             </div>
-            <span className="text-xs text-slate-400 font-mono">Live queue</span>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-[1.12] mb-5">
+              Facilities issue tracking and dispatch resolution
+            </h1>
+
+            <p className="text-sm sm:text-base text-slate-400 max-w-xl leading-relaxed font-normal mb-7">
+              A direct operational link between students, wardens, and campus maintenance engineers.
+              Automatic urgency classification, guaranteed SLA resolution tracking, and complete audit history.
+            </p>
+
+            {/* Actions */}
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <Link
+                to="/register"
+                className="btn-primary text-sm py-2 px-4 shadow-sm"
+              >
+                <span>Report an issue</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/login"
+                className="btn-secondary text-sm py-2 px-4 bg-slate-900 text-slate-300 border-slate-800 hover:bg-slate-800 hover:text-white"
+              >
+                Sign in with demo account
+              </Link>
+            </div>
+
+            {/* Operational Telemetry Line */}
+            <div className="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-lg">
+              <div>
+                <p className="text-lg font-semibold text-white font-mono tabular-nums">3.2h</p>
+                <p className="text-xs text-slate-400 mt-0.5">Average fix time</p>
+              </div>
+              <div>
+                <p className="text-lg font-semibold text-white font-mono tabular-nums">100%</p>
+                <p className="text-xs text-slate-400 mt-0.5">Audited history</p>
+              </div>
+              <div>
+                <p className="text-lg font-semibold text-white font-mono tabular-nums">24h</p>
+                <p className="text-xs text-slate-400 mt-0.5">Duplicate check</p>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-2.5 text-xs">
-            {[
-              { id: 'CP-2024-00104', title: 'Water leakage in 2nd floor restroom', loc: 'Hostel Block B', prio: 'High', stat: 'In Progress', dot: 'bg-blue-500' },
-              { id: 'CP-2024-00105', title: 'Exposed wire sparking behind socket', loc: 'Science Block', prio: 'Critical', stat: 'Submitted', dot: 'bg-rose-500' },
-              { id: 'CP-2024-00098', title: 'Classroom ceiling fan motor replaced', loc: 'Room 204', prio: 'Medium', stat: 'Resolved', dot: 'bg-emerald-500' }
-            ].map(row => (
-              <div key={row.id} className="flex items-center justify-between p-2.5 rounded bg-slate-900/80 border border-slate-800">
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <span className="font-mono text-[11px] text-slate-400">{row.id}</span>
-                  <span className="text-slate-200 truncate">{row.title}</span>
+          {/* Right Column: Crafted Coded Dispatch Console Preview (5 cols) */}
+          <div className="lg:col-span-5 mt-10 lg:mt-0">
+            <div className="card p-4 sm:p-5 bg-[#0f1424] border-slate-800 shadow-xl">
+              
+              {/* Console Header */}
+              <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-slate-800 text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  <span className="font-mono text-slate-300 font-medium">Dispatch queue</span>
                 </div>
-                <div className="flex items-center gap-3 flex-shrink-0 text-[11px]">
-                  <span className="text-slate-400 hidden sm:inline">{row.loc}</span>
-                  <span className="flex items-center gap-1.5 text-slate-300">
-                    <span className={`w-1.5 h-1.5 rounded-full ${row.dot}`} />
-                    {row.stat}
+                <span className="font-mono text-[11px] text-slate-500">Live operational feed</span>
+              </div>
+
+              {/* Active Ticket Card (Moment) */}
+              <div className="bg-[#141b2f] border border-slate-700/70 rounded-lg p-3.5 mb-3">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="font-mono text-xs text-blue-400 font-medium bg-blue-500/10 border border-blue-500/20 px-1.5 py-0.5 rounded">
+                    CP-2024-00104
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+                    High priority
+                  </span>
+                </div>
+
+                <p className="text-sm font-medium text-white mb-1.5">
+                  Water supply disruption in 2nd floor restroom
+                </p>
+
+                <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
+                  <span className="flex items-center gap-1 text-slate-300">
+                    <MapPin className="w-3 h-3 text-slate-400" />
+                    Hostel Block B
+                  </span>
+                  <span>•</span>
+                  <span>Water & Plumbing</span>
+                </div>
+
+                {/* Progress bar state */}
+                <div className="bg-slate-900/90 rounded p-2.5 border border-slate-800 space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px]">
+                    <span className="text-blue-300 flex items-center gap-1 font-medium">
+                      <Wrench className="w-3 h-3" />
+                      Technician dispatched
+                    </span>
+                    <span className="text-slate-400 font-mono tabular-nums">12m ago</span>
+                  </div>
+                  <div className="w-full bg-slate-800 rounded-full h-1 overflow-hidden">
+                    <div className="bg-blue-500 h-full rounded-full w-2/3" />
+                  </div>
+                  <p className="text-[10px] text-slate-400 italic">
+                    "Plumbing contractor en route with replacement copper valve"
+                  </p>
+                </div>
+              </div>
+
+              {/* Secondary Queue Items */}
+              <div className="space-y-2 text-xs">
+                <div className="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/80">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="font-mono text-[11px] text-slate-400">CP-2024-00105</span>
+                    <span className="text-slate-300 truncate">Exposed wire sparking in socket</span>
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-[11px] text-rose-400 flex-shrink-0 ml-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                    Critical
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/80">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="font-mono text-[11px] text-slate-400">CP-2024-00098</span>
+                    <span className="text-slate-300 truncate">Ceiling fan motor replaced</span>
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 flex-shrink-0 ml-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    Resolved
                   </span>
                 </div>
               </div>
-            ))}
+
+              <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+                <span>3 active triage engineers online</span>
+                <span className="font-mono">SLA standard</span>
+              </div>
+            </div>
           </div>
+
         </div>
       </section>
 
